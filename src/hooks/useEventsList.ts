@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { type BasicEvent, type Events } from "../types/Events"
-import { getEventsList } from "../api/auth/events";
+import { getEventsList } from "../api/events";
 
 
 export function useEventList() {

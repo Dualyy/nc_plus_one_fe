@@ -1,4 +1,6 @@
-
+export interface BasicEventDict{
+    event: BasicEvent;
+}
 
 export interface BasicEvent{
     id: number;
