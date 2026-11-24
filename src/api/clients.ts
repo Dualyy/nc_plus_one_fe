@@ -1,16 +1,17 @@
+import { readToken } from "../util/token";
+
 const BASE_URL = import.meta.env.VITE_API_URL ?? 'http://127.0.0.1:8000';
 
 
-const TOKEN = 'plus_one'
 
 function authHeaders(): Record<string, string> {
-    const token = localStorage.getItem(TOKEN)
+    const token = readToken()
     return token ? { Authorization: `Bearer ${token}` } : {}
 }
 
 
 export async function apiGet<T>(path: string, signal?: AbortSignal): Promise<T> {
-    const response = await fetch(BASE_URL + path, { ...authHeaders(), signal })
+    const response = await fetch(BASE_URL + path, {headers: authHeaders(), signal })
 
     if (!response.ok) {
         throw new Error(`Request failed with ${response.status}`)

@@ -1,9 +1,15 @@
 import { NavLink } from "react-router";
 import './NavBar.css'
+import useUser from "../hooks/useUser";
 
 
 
 export default function NavBar() {
+
+    const { userState } = useUser();
+
+    
+
     return (
         <header className="navbar" aria-label="Main navigation">
             <div className="navbar__inner">
@@ -22,8 +28,10 @@ export default function NavBar() {
                     </ul>
                 </nav>
                 <div className="navbar__actions">
-                    <NavLink className="navbar__button" id="create-event" to="/events/create" aria-label="create events">Create Event</NavLink>
-                    <a>Welcome back, User 1</a>
+                    {userState.status === "success" ?
+                        <NavLink className="navbar__button" id="create-event" to="/events/create" aria-label="create events">Create Event</NavLink> :
+                        <NavLink className="navbar__button" id="create-event" to="/register" aria-label="create events">Create Event</NavLink>}
+                    {userState.status === "success" ? <a>Welcome back, {userState.user.name}</a> : ""}
                 </div>
             </div>
         </header >

@@ -1,5 +1,5 @@
 import type { EventDict, Events } from "../types/Events";
-import { apiGet } from "./auth/clients";
+import { apiGet } from "./clients";
 
 export function getEventsList(signal?: AbortSignal) :Promise<Events>{
     return apiGet<Events>("/events", signal)
