@@ -30,7 +30,7 @@ export default function EventPage() {
 
     return (
     <>
-    <SearchBar value={searchValue} changeHandler={onChangeHandler}/>
+    <SearchBar htmlId="event-search-bar"value={searchValue} changeHandler={onChangeHandler}/>
     {fetchEventError && <p>Error fetching events: {fetchEventError}</p>}
     {isLoading ? <p>Loading...</p> : <EventGrid events={eventFilter(eventList)} />}
         

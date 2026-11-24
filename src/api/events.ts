@@ -6,6 +6,5 @@ export function getEventsList(signal?: AbortSignal) :Promise<Events>{
 }
 
 export function getEvent(id: string ,signal?: AbortSignal) :Promise<EventDict>{
-    console.log("/events/" + id)
     return apiGet<EventDict>("/events/" + id, signal)
 }
