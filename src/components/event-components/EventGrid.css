@@ -1,0 +1,22 @@
+.event-grid__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.event-grid__item {
+  display: flex;
+}
+
+.event-grid__item > * {
+  flex: 1;
+}
+
+.event-grid__empty {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--muted);
+}
