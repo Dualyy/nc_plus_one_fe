@@ -1,4 +1,4 @@
-import LogInForm from "../components/login-components/LogInForm";
+import AuthForm from "../components/auth-components/AuthForm";
 import useUser from "../hooks/useUser";
 
 export default function LoginPage() {
@@ -12,7 +12,7 @@ export default function LoginPage() {
 
     return (
     <>
-        {userState.status=== "anonymous" && <LogInForm />}
+        {userState.status=== "anonymous" && <AuthForm  mode="login"/>}
         
         {userState.status === "success" && <button type="button" onClick={()=> onClickHandler()}>Logout</button>}
     </>

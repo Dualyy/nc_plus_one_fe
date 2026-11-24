@@ -3,6 +3,7 @@ import { Layout } from "./pages/Layout";
 import EventPage from "./pages/EventPage";
 import EventDetail from "./components/event-components/EventDetail";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 export default function AppRoutes() {
 
@@ -12,7 +13,7 @@ export default function AppRoutes() {
                 <Route path="/" element={<h2>HelloWorld</h2>} />
                 <Route path="/events" element={<EventPage />} />
                 <Route path="/events/:id" element={<EventDetail />} />
-                {/* <Route path="/pokedex/:id" element={<PokemonPage />} /> */}
+                <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 {/* <Route path="*" element={<NotFoundPage />} /> */}
             </Route>
