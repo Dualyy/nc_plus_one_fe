@@ -17,7 +17,7 @@ export default function EventCard({ event }: EventCardProps) {
                     <p className="event-card__location">{event.location ?? 'Online'}</p>
                     <p className="event-card__time">
                         <time dateTime={event.starts_at}>
-                            {parseDate(event.starts_at)} · {parseDate(event.starts_at)}–{parseDate(event.ends_at)}
+                            {parseDate(event.starts_at)} - {parseDate(event.starts_at)}-{parseDate(event.ends_at)}
                         </time>
                     </p>
                 </div>
