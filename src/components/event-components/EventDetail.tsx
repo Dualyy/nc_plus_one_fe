@@ -13,11 +13,14 @@ export default function EventDetail({event}:EventDetailProps) {
         <h2>{event.title}</h2>
         <p>{event.description}</p>
     </section>
-
+        <hr />
     <section>
-        <h2>{event.venue.name}</h2>
+        {event.venue?.address? 
+        <><h2>{event.venue.name}</h2>
         <p>{event.venue.address}</p>
         <p>{event.venue.capacity}</p>
+        </> : <p>online</p>}
+        
     </section>
     </>
     )

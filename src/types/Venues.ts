@@ -1,7 +1,7 @@
 export interface Venue {
     id: number;
     name: string;
-    address: string;
+    address: string | null;
     capacity: number;
 }
 

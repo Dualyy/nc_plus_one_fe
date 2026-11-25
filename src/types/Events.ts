@@ -36,3 +36,4 @@ export interface EventDict {
 export interface EventDetails extends DetailedEvent {  
     venue: Venue;
 }
+

@@ -18,6 +18,7 @@ export function useEventList() {
                 setEventList(response.events);
             } catch (err) {
                 if (err instanceof Error) {
+                    if (controller.signal.aborted) return;
                     setFetchEventError(err.message)
                 } 
             }finally {
