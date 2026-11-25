@@ -1,3 +1,5 @@
+import type { Venue } from "./Venues";
+
 export interface BasicEventDict{
     event: BasicEvent;
 }
@@ -29,4 +31,8 @@ export interface DetailedEvent{
 
 export interface EventDict { 
     event: DetailedEvent 
+}
+
+export interface EventDetails extends DetailedEvent {  
+    venue: Venue;
 }

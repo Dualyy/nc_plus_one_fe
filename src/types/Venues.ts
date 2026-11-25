@@ -8,3 +8,7 @@ export interface Venue {
 export interface VenueArray{
     venues: Venue[];
 }
+
+export interface VenueResponse{
+    venue: Venue;
+}

@@ -3,7 +3,7 @@ import { type DetailedEvent, type EventDict, type Events } from "../types/Events
 import { getEvent } from "../api/events";
 
 
-export function useEvent(id: string) {
+export function useEvent(id: string | undefined)  {
     const [event, setEvent] = useState<DetailedEvent | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [fetchEventError, setFetchEventError] = useState<string | null>(null);
@@ -11,6 +11,7 @@ export function useEvent(id: string) {
 
     useEffect(() => {
         setFetchEventError(null);
+        if (id === undefined) return;
         const fetchEvent = async () => {
             try {
                 const response: EventDict = await getEvent(id);
