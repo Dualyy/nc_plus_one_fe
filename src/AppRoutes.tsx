@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import EventDetailPage from "./pages/EventDetailPage";
+import UserEventsPage from "./pages/UserEventsPage";
+import EventFormPage from "./pages/EventFormPage";
 
 export default function AppRoutes() {
 
@@ -16,6 +18,8 @@ export default function AppRoutes() {
                 <Route path="/events/:id" element={<EventDetailPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/user/me/events" element={<UserEventsPage />} />
+                <Route path="/events/create" element={<EventFormPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>

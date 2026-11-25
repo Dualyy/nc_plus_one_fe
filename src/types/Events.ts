@@ -13,6 +13,14 @@ export interface BasicEvent{
     location: string;
 }
 
+export interface CreateEvent{
+    title: string;
+    description: string | null;
+    starts_at: string;
+    ends_at: string;
+    venue_id: number;
+}
+
 export interface Events {
     events: BasicEvent[]
 }

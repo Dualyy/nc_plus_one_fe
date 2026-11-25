@@ -10,6 +10,7 @@ export function useEvent(id: string | undefined)  {
     const [refetchCounter, setRefetchCounter] = useState(0);
 
     useEffect(() => {
+        
         setFetchEventError(null);
         if (id === undefined) return;
         const fetchEvent = async () => {
@@ -25,6 +26,6 @@ export function useEvent(id: string | undefined)  {
                 }
         }
         fetchEvent();
-    },[refetchCounter])
+    },[id,refetchCounter])
     return {event, isLoading, fetchEventError, refetch: setRefetchCounter}
 }

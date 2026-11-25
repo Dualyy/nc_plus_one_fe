@@ -5,16 +5,17 @@ import { getVenues } from "../../api/venues";
 
 
 
-export default function UserProvider({ children }: { children: ReactNode }) {
-    const controller = new AbortController();
+export default function VenueProvider({ children }: { children: ReactNode }) {
     const [venues, setVenues] = useState<Venue[]>([]);
 
     useEffect(() => {
+        const controller = new AbortController();
          async function loadVenues() {
             try {
                 const allVenues = await getVenues(controller.signal);
                 setVenues(allVenues.venues)
             } catch (err){
+                if (controller.signal.aborted) return;
                 console.error("Failed to load venues", err);
                 setVenues([]);
             }

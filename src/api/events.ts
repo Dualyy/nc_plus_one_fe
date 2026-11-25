@@ -1,8 +1,12 @@
-import type { EventDetails, EventDict, Events } from "../types/Events";
-import { apiGet } from "./clients";
+import type { BasicEvent, CreateEvent, EventDetails, EventDict, Events } from "../types/Events";
+import { apiGet, apiPost } from "./clients";
 
 export function getEventsList(signal?: AbortSignal) :Promise<Events>{
     return apiGet<Events>("/events", signal)
+}
+
+export function getEventsListByUserId(signal?: AbortSignal) :Promise<Events>{
+    return apiGet<Events>("/user/me/events", signal)
 }
 
 export function getEvent(id: string ,signal?: AbortSignal) :Promise<EventDict>{
@@ -11,4 +15,8 @@ export function getEvent(id: string ,signal?: AbortSignal) :Promise<EventDict>{
 
 export function getEventDetails(id: string ,signal?: AbortSignal) :Promise<EventDetails>{
     return apiGet<EventDetails>(`/events/${id}/details`, signal)
+}
+
+export function createEvent(body: CreateEvent ,signal? :AbortSignal):Promise<BasicEvent>{
+    return apiPost<BasicEvent>('/events',body,signal)
 }
