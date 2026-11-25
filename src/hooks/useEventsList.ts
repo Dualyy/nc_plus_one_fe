@@ -10,10 +10,11 @@ export function useEventList() {
     const [refetchCounter, setRefetchCounter] = useState(0);
 
     useEffect(() => {
+        const controller = new AbortController()
         setFetchEventError(null);
         const fetchEventList = async () => {
             try {
-                const response: Events = await getEventsList();
+                const response: Events = await getEventsList(controller.signal);
                 setEventList(response.events);
             } catch (err) {
                 if (err instanceof Error) {
@@ -24,6 +25,8 @@ export function useEventList() {
                 }
         }
         fetchEventList();
+        return () => controller.abort()
     },[refetchCounter])
+    
     return {eventList, isLoading, fetchEventError, refetch: setRefetchCounter}
 }
