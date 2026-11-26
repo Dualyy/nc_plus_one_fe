@@ -32,7 +32,7 @@ export interface DetailedEvent{
     starts_at: string;
     ends_at: string;
     location: string;
-    organiser: number;
+    organiser_id: number;
     venue_id: number;
     created_at: number;
 }

@@ -35,7 +35,6 @@ export default function AuthForm(authMode: AuthFormProps) {
 
         } catch (err) {
             setError(err instanceof Error ? err.message : "Something went wrong");
-            console.log(err instanceof Error && err.message)
             setEmail("");
             setPassword("");
             setIsSubmitting(false);

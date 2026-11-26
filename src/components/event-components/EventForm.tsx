@@ -1,6 +1,4 @@
-
 import { useState } from "react";
-import { createEvent } from "../../api/events";
 import useVenues from "../../hooks/useVenues";
 import { useCreateEvent } from "../../hooks/useCreateEvent";
 import { useNavigate } from "react-router";
