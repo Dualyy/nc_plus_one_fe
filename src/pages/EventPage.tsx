@@ -32,7 +32,7 @@ export default function EventPage() {
     <>
     <SearchBar htmlId="event-search-bar"value={searchValue} changeHandler={onChangeHandler}/>
     {fetchEventError && <p>Error fetching events: {fetchEventError}</p>}
-    {isLoading ? <p>Loading...</p> : <EventGrid events={eventFilter(eventList)} />}
+    {isLoading ? <p>Loading...</p> : <EventGrid refetch={() => {refetch((count)=> count + 1)}} events={eventFilter(eventList)} />}
         
     </>)
 }

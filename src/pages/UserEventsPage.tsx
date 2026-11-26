@@ -5,7 +5,7 @@ import { useUserEventList } from "../hooks/useUserEventsList";
 
 export default function UserEventsPage() {
 
-    const { userEventList, isLoading, fetchEventError } = useUserEventList();
+    const { userEventList, isLoading, fetchEventError, refetch } = useUserEventList();
     const { userState } = useUser();
     const navigate = useNavigate()
 
@@ -22,7 +22,7 @@ export default function UserEventsPage() {
 
     return (<>
         {fetchEventError && <p>Error fetching events: {fetchEventError}</p>}
-        {isLoading ? <p>Loading...</p> : <EventGrid events={userEventList} />}
+        {isLoading ? <p>Loading...</p> : <EventGrid refetch={()=> refetch((count)=> count +1)} events={userEventList} />}
     </>
     )
 }
