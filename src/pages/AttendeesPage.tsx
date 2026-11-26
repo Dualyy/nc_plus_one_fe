@@ -8,16 +8,16 @@ import useAttendees from "../hooks/useAttendees";
 export default function AttendeesPage() {
 
     const { id } = useParams();
-    const { event, isLoading } = useEvent(id);
+    const { event, isLoading, fetchEventError } = useEvent(id);
     const {attendees, isLoading: isLoadingAttendees} = useAttendees(id!);
 
-    if(isLoadingAttendees) return <p>Loading attendees....</p>
+    if(isLoadingAttendees || isLoading) return <p>Loading...</p>
 
     if(!attendees?.attendees) return <p>No attendees</p>
 
     return (<>
         <section>
-            <h2>{!isLoading ? event?.title : "Loading..."}</h2>
+            <h2>{event?.title}</h2>
             <p>{!isLoading ? event?.location : "Loading..."}</p>
         </section>
         <section>
