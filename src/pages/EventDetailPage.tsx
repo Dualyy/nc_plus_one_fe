@@ -29,7 +29,12 @@ export default function EventDetailPage() {
                 <button type="button" onClick={() => navigate(`/events/${id}/attendees`)}>
                     Attendees list
                 </button>
+                <button  type="button" id="edit-button" onClick={() => navigate(`/events/${id}/edit`)}>
+                    edit event
+                </button>
             </section>
+
+        
         )}
 
     </>)

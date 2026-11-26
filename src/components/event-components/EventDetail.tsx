@@ -1,3 +1,4 @@
+import useUser from "../../hooks/useUser";
 import type { EventDetails } from "../../types/Events";
 
 
@@ -6,7 +7,6 @@ interface EventDetailProps{
 }
 
 export default function EventDetail({event}:EventDetailProps) {
- 
 
     return (<>
     <section>
@@ -20,7 +20,10 @@ export default function EventDetail({event}:EventDetailProps) {
         <p>{event.venue.address}</p>
         <p>{event.venue.capacity}</p>
         </> : <p>online</p>}
-        
+    </section>
+
+    <section>
+
     </section>
     </>
     )

@@ -5,6 +5,7 @@ import type { EventDetails } from "../types/Events";
 export function useEventDetails(id: string | undefined) {
     const [event, setEvent] = useState<EventDetails | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [isLoading,setIsLoading] = useState(true)
 
     useEffect(() => {
         if (id === undefined) return;
@@ -17,6 +18,8 @@ export function useEventDetails(id: string | undefined) {
             } catch (err) {
                 if (controller.signal.aborted) return;
                 setError(err instanceof Error ? err.message : "Failed to load event");
+            } finally{
+                setIsLoading(false);
             }
         }
         load(id);
@@ -24,5 +27,5 @@ export function useEventDetails(id: string | undefined) {
         return () => controller.abort();
     }, [id]);
 
-    return { event, error };
+    return { event,isLoading, error };
 }

@@ -18,9 +18,9 @@ export default function EventPage() {
         setSearchValue(value)
     }
 
-    function allRefetch(){
-        refetch((count)=> count +1);
-        refetchUserEvents((count)=> count + 1)
+    function allRefetch() {
+        refetch((count) => count + 1);
+        refetchUserEvents((count) => count + 1)
     }
 
     function eventFilter(events: BasicEvent[]) {

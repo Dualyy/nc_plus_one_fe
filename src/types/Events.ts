@@ -21,6 +21,14 @@ export interface CreateEvent{
     venue_id: number;
 }
 
+export interface PatchEvent{
+    title?: string;
+    description?: string |undefined;
+    starts_at?: string;
+    ends_at?: string;
+    venue_id?: number;
+}
+
 export interface Events {
     events: BasicEvent[]
 }
