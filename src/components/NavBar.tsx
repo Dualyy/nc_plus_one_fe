@@ -31,7 +31,7 @@ export default function NavBar() {
                     {userState.status === "success" ?
                         <NavLink className="navbar__button" id="create-event" to="/events/create" aria-label="create events">Create Event</NavLink> :
                         <NavLink className="navbar__button" id="create-event" to="/register" aria-label="create events">Create Event</NavLink>}
-                    {userState.status === "success" ? <a>Welcome back, {userState.user.name}</a> : <>
+                    {userState.status === "success" ? <p>Welcome back, <span><Link to="/login">{userState.user.name}</Link></span></p> : <>
                      <Link to="/register">Sign up</Link>
                      <Link to="/login">Log in</Link>
                      </>

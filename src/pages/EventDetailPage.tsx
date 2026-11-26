@@ -9,7 +9,7 @@ export default function EventDetailPage() {
 
     const { id } = useParams()
     const { event, error } = useEventDetails(id);
-    const { refetch } = useUserEventList()
+    const { userEventList, refetch } = useUserEventList()
     const navigate = useNavigate();
     const { userState } = useUser();
 
@@ -21,7 +21,7 @@ export default function EventDetailPage() {
 
     return (<>
         <EventDetail event={event} />
-        <RsvpButton refetch={() => refetch((count) => count + 1)} event={event} />
+        <RsvpButton userEventList={userEventList} refetch={() => refetch((count) => count + 1)} event={event} />
         <hr />
 
         {userState.status === "success" && userState.user.id === event.organiser_id && (

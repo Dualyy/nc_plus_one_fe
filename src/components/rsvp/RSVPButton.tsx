@@ -8,18 +8,15 @@ import { useNavigate } from "react-router";
 
 interface RsvpButtonProps {
     event: BasicEvent;
+    userEventList:BasicEvent[]
     refetch: () => void;
 }
 
 
-export function RsvpButton({ event, refetch }: RsvpButtonProps) {
+export function RsvpButton({ event, userEventList, refetch }: RsvpButtonProps) {
 
-    const { userEventList ,refetch: rsvpRefetch} = useUserEventList();
-    const allRefetches = () => {
-        refetch();
-        rsvpRefetch((count) => count +1);
-    }
-    const { toggleRSVP, currId, rsvpError } = useRSVP(allRefetches);
+
+    const { toggleRSVP, currId, rsvpError } = useRSVP(refetch);
     const { userState } = useUser()
 
     const isGoing = userEventList.some((rsvpEvent) => rsvpEvent.id === event.id);
@@ -28,6 +25,7 @@ export function RsvpButton({ event, refetch }: RsvpButtonProps) {
     if (userState.status === "anonymous") {
         return <button onClick={() => navigate("/login")}>Log in to RSVP</button>;
     }
+
 
     return (
         <>

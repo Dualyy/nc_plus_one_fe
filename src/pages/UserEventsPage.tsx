@@ -22,7 +22,7 @@ export default function UserEventsPage() {
 
     return (<>
         {fetchEventError && <p>Error fetching events: {fetchEventError}</p>}
-        {isLoading ? <p>Loading...</p> : <EventGrid refetch={()=> refetch((count)=> count +1)} events={userEventList} />}
+        {isLoading ? <p>Loading...</p> : <EventGrid userEventList={userEventList} refetch={()=> refetch((count)=> count +1)} events={userEventList} />}
     </>
     )
 }

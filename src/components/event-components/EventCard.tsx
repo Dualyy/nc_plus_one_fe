@@ -7,11 +7,13 @@ import { RsvpButton } from "../rsvp/RSVPButton";
 
 interface EventCardProps {
     event: BasicEvent;
+    userEventList: BasicEvent[]
     refetch: ()=> void;
 }
 
 
-export default function EventCard({ event, refetch }: EventCardProps) {
+
+export default function EventCard({ event, userEventList, refetch }: EventCardProps) {
     return (
         <article className="event-card">
             <header className="event-card__header">
@@ -28,7 +30,7 @@ export default function EventCard({ event, refetch }: EventCardProps) {
                 </div>
             </header>
             <div className="event-card__footer">
-                <RsvpButton event={event} refetch={refetch}/>
+                <RsvpButton event={event} userEventList={userEventList} refetch={refetch}/>
             </div>
         </article>
     )
