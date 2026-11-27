@@ -10,6 +10,7 @@ import EventFormPage from "./pages/EventFormPage";
 import AttendeesPage from "./pages/AttendeesPage";
 import EditEventPage from "./pages/EditEventPage";
 import OrganiserStatPage from "./pages/OrganiserStatPage";
+import UserPage from "./pages/UserPage";
 
 export default function AppRoutes() {
 
@@ -26,6 +27,7 @@ export default function AppRoutes() {
                 <Route path="/events/:id/attendees" element={<AttendeesPage />} />
                 <Route path="/events/:id/edit" element={<EditEventPage />} />
                 <Route path="/organisers/:id/stats" element={<OrganiserStatPage />}/>
+                <Route path="/user/me" element={<UserPage />}/>
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
