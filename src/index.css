@@ -107,6 +107,9 @@ code {
   background: var(--code-bg);
   border-radius: 4px;
 }
+main{
+  margin-left: 1rem;
+}
 
 .header-container__event-page {
   padding-left: 1rem;
@@ -157,11 +160,52 @@ code {
   text-align: left;
 }
 
-.organiserStat-container {
-  margin-left: 1rem;
+.plus{
+  color: var(--accent)
 }
 
+.event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 30rem;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  text-align: left;
+  border-radius: 12px;
+}
 
-.user-settings-container {
-  margin-left: 1rem;
+.event-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-h);
+}
+
+.event-form textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.event-form button {
+  padding: 0.5rem;
+  width: 8rem;
+  margin: auto;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent-text);
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.event-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.event-form :is(input, textarea, select, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
