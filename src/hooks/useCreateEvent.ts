@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { BasicEvent, CreateEvent } from "../types/Events";
+import type { CreateEvent } from "../types/Events";
 import { createEvent } from "../api/events";
 
 export function useCreateEvent() {

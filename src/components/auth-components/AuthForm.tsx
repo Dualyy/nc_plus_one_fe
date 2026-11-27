@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useUser from "../../hooks/useUser"
-import { useLocation, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
 
 type AuthFormProps = { mode: "login" | "signup" }
 

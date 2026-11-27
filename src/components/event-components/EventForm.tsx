@@ -17,7 +17,7 @@ export default function EventForm() {
     const [startsAt, setStartsAt] = useState("");
     const [endsAt, setEndsAt] = useState("");
     const [venueId, setVenueId] = useState("");
-    const { submitEvent, isSubmitting, createError } = useCreateEvent();
+    const { submitEvent } = useCreateEvent();
     const navigate = useNavigate()
     const { userState } = useUser();
 

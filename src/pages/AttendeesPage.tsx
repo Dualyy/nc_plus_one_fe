@@ -8,7 +8,7 @@ import useAttendees from "../hooks/useAttendees";
 export default function AttendeesPage() {
 
     const { id } = useParams();
-    const { event, isLoading, fetchEventError } = useEvent(id);
+    const { event, isLoading} = useEvent(id);
     const {attendeesState} = useAttendees(id!);
 
     if(attendeesState.status==="loading" || isLoading) return <p>Loading...</p>
