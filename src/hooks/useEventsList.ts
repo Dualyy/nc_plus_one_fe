@@ -3,31 +3,32 @@ import { type BasicEvent, type Events } from "../types/Events"
 import { getEventsList } from "../api/events";
 
 
+type useEventListType =
+ | {status:"success", events: BasicEvent[]}
+ | {status:"error", msg: string}
+ | {status:"loading"}
+
+
 export function useEventList() {
-    const [eventList, setEventList] = useState<BasicEvent[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [fetchEventError, setFetchEventError] = useState<string | null>(null);
+    const [eventListState, setEventListState] = useState<useEventListType>({status: "loading"});
     const [refetchCounter, setRefetchCounter] = useState(0);
 
     useEffect(() => {
         const controller = new AbortController()
-        setFetchEventError(null);
         const fetchEventList = async () => {
             try {
                 const response: Events = await getEventsList(controller.signal);
-                setEventList(response.events);
+                setEventListState({status:"success", events: response.events});
             } catch (err) {
+                if (controller.signal.aborted) return;
                 if (err instanceof Error) {
-                    if (controller.signal.aborted) return;
-                    setFetchEventError(err.message)
+                     setEventListState({status:"error", msg: (err.message)});
                 } 
-            }finally {
-                    setIsLoading(false);
-                }
+            }
         }
         fetchEventList();
         return () => controller.abort()
     },[refetchCounter])
     
-    return {eventList, isLoading, fetchEventError, refetch: setRefetchCounter}
+    return {eventListState, refetch: setRefetchCounter}
 }

@@ -1,7 +1,5 @@
 import { useParams } from "react-router";
 import useOrganiserStats from "../hooks/useOrganiserStats";
-import { useUserEventList } from "../hooks/useUserEventsList";
-import { useEventList } from "../hooks/useEventsList";
 
 export default function OrganiserStatPage() {
 

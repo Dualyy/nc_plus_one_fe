@@ -9,11 +9,12 @@ export default function AttendeesPage() {
 
     const { id } = useParams();
     const { event, isLoading, fetchEventError } = useEvent(id);
-    const {attendees, isLoading: isLoadingAttendees} = useAttendees(id!);
+    const {attendeesState} = useAttendees(id!);
 
-    if(isLoadingAttendees || isLoading) return <p>Loading...</p>
+    if(attendeesState.status==="loading" || isLoading) return <p>Loading...</p>
+    if(attendeesState.status==="error") return <p>{attendeesState.msg} attendees</p>
 
-    if(!attendees?.attendees) return <p>No attendees</p>
+    if(attendeesState.attendees.length === 0) return <p>No attendees</p>
 
     return (<>
         <section>
@@ -29,7 +30,7 @@ export default function AttendeesPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {attendees.attendees.map((user) => (
+                    {attendeesState.attendees.map((user) => (
                         <tr key={user.id}>
                             <td>{user.name}</td>
                             <td>{user.email}</td>

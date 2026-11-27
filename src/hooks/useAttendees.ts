@@ -1,30 +1,28 @@
 import { useEffect, useState } from "react";
-import type { Attendees } from "../types/User";
+import type { User } from "../types/User";
 import { getAttendees } from "../api/organiser";
 
+type AttendeesState = 
+| {status:"loading"}
+| {status: "success", attendees: User[]}
+| {status: "error", msg: string}
 
 
 export default function useAttendees(eventId: string) {
-    const [attendees, setAttendees] = useState<Attendees | null>(null);
-    const [fetchAttendeesError, setFetchAttendeesError] = useState<Error | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [attendeesState, setAttendeesState] = useState<AttendeesState>({status:"loading"});
     const [refetchCounter, setRefetchCounter] = useState(0);
 
     useEffect(() => {
 
         async function fetchAttendees(eventId: string) {
-            setFetchAttendeesError(null);
-            setAttendees(null);
             try {
                 const response = await getAttendees(eventId);
-                setAttendees(response);
+                setAttendeesState({status:"success", attendees: response.attendees});
             } catch (error) {
-                if (error instanceof Error) setFetchAttendeesError(error);
-            } finally {
-                setIsLoading(false);
+                if (error instanceof Error) setAttendeesState({status: "error", msg: error.message});
             }
         }
         fetchAttendees(eventId);
     }, [refetchCounter])
-    return { attendees, fetchAttendeesError, isLoading, refetch: setRefetchCounter }
+    return { attendeesState, refetch: setRefetchCounter }
 }
