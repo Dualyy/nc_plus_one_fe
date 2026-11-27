@@ -42,3 +42,15 @@ npm run dev
 ```
 
 Then open the URL shown in your terminal. By default that would be: `http://localhost:5173`.
+
+### Features in development:
+
+Paramaterised / server-side search 
+
+Light and dark mode toggle
+
+Delete events
+
+General improvements to individual pages like more stats, graphs etc.
+
+
