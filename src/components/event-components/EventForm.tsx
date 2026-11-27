@@ -92,7 +92,7 @@ export default function EventForm() {
                     <option value="" disabled>Select a venue</option>
                     {venues.map((venue) => <option key={venue.id} value={venue.id}>{venue.name}</option>)}
                 </select>
-                <button>Submit</button>
+                <button disabled={venueId === ""}>Submit</button>
             </form>
         </>)
     } else if (!isLoading && event !== null) {
