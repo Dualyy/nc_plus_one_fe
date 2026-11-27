@@ -4,8 +4,11 @@ import { useEventDetails } from "../hooks/useEventDetails";
 import { RsvpButton } from "../components/rsvp/RSVPButton";
 import { useUserEventList } from "../hooks/useUserEventsList";
 import useUser from "../hooks/useUser";
+import useOrganiserStats from "../hooks/useOrganiserStats";
+import { useEffect } from "react";
 
 export default function EventDetailPage() {
+    
 
     const { id } = useParams()
     const { event, error } = useEventDetails(id);
@@ -13,11 +16,16 @@ export default function EventDetailPage() {
     const navigate = useNavigate();
     const { userState } = useUser();
 
+
+
+    
+
     if (id === undefined) return <p>Invalid event id: {id}</p>;
     if (error) return <p>{error}</p>;
     if (event === null) return <p>Loading...</p>;
     if (userState.status === "loading") return <p>Loading...</p>;
-
+    if (error) return <p>Something went wrong.</p>;
+    if (!event) return <p>Loading...</p>;
 
     return (<>
         <EventDetail event={event} />

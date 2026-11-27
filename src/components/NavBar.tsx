@@ -20,10 +20,10 @@ export default function NavBar() {
                             <NavLink className="navbar__link" to="/events" aria-label="Browse events">Browse</NavLink>
                         </li>
                         <li>
-                            <NavLink className="navbar__link" to="/user/me/events" aria-label="my events">My events</NavLink>
+                            <NavLink className="navbar__link" to="/user/me/events" aria-label="my RSVPs">my RSVPs</NavLink>
                         </li>
                         <li>
-                            <NavLink className="navbar__link" to="/organiser" aria-label="my events">Organiser Dashboard</NavLink>
+                            <NavLink className="navbar__link" to={userState.status==="success" ? `/organisers/${userState.user.id}/stats` : "/login"} aria-label="my stats">my stats</NavLink>
                         </li>
                     </ul>
                 </nav>

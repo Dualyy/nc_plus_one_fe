@@ -4,15 +4,18 @@ import SearchBar from "../components/SearchBar";
 import { useEventList } from "../hooks/useEventsList";
 import type { BasicEvent } from "../types/Events";
 import { useUserEventList } from "../hooks/useUserEventsList";
+import useOrganiserStats from "../hooks/useOrganiserStats";
 
 export default function EventPage() {
 
     const { eventList, isLoading, fetchEventError, refetch } = useEventList();
 
-
     const [searchValue, setSearchValue] = useState("");
 
     const { userEventList, isLoading: isRsvpLoading, refetch: refetchUserEvents } = useUserEventList();
+
+
+
 
     function onChangeHandler(value: string) {
         setSearchValue(value)
@@ -37,12 +40,17 @@ export default function EventPage() {
         return <p>Currently no events...</p>
     }
 
-    if (isLoading || isRsvpLoading) return <p>Loading...</p>
+    if (isLoading || isRsvpLoading)
+        { return <p>Loading...</p>}
 
     else {
         return (<>
+            <h2 className="header" id="header__event-page"> What's on?</h2>
+            <p className="subtext" id="subtext__event-page">currently {eventList.length} events in the UK</p>
             <SearchBar htmlId="event-search-bar" value={searchValue} changeHandler={onChangeHandler} />
             {fetchEventError && <p>Error fetching events: {fetchEventError}</p>}
+            <hr></hr>
+            
             {isLoading ? <p>Loading...</p> : <EventGrid userEventList={userEventList} refetch={allRefetch} events={eventFilter(eventList)} />}
 
         </>)
