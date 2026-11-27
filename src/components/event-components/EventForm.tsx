@@ -70,7 +70,7 @@ export default function EventForm() {
 
     if ((id === undefined)) {
         return (<>
-            <form onSubmit={(event) => handleSubmit(event)}>
+            <form className="event-form" onSubmit={(event) => handleSubmit(event)}>
                 <label htmlFor="title">
                     title
                     <input required value={title} id="title" type="text" onChange={(event) => setTitle(event.target.value)} />
@@ -96,7 +96,7 @@ export default function EventForm() {
         </>)
     } else if (!isLoading && event !== null) {
         return (
-            <form onSubmit={handleChangeSubmit}>
+            <form className="event-form" onSubmit={handleChangeSubmit}>
                 <label htmlFor="title">
                     title
                     <input required id="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />

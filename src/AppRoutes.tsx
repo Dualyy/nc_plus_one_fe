@@ -11,13 +11,14 @@ import AttendeesPage from "./pages/AttendeesPage";
 import EditEventPage from "./pages/EditEventPage";
 import OrganiserStatPage from "./pages/OrganiserStatPage";
 import UserPage from "./pages/UserPage";
+import HomePage from "./pages/HomePage";
 
 export default function AppRoutes() {
 
     return (
         <Routes>
             <Route element={<Layout />}>
-                <Route path="/" element={<h2>HelloWorld</h2>} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/events" element={<EventPage />} />
                 <Route path="/events/:id" element={<EventDetailPage />} />
                 <Route path="/register" element={<RegisterPage />} />
