@@ -27,7 +27,7 @@ export function RsvpButton({ event, userEventList, refetch }: RsvpButtonProps) {
 
     return (
         <>
-            <button disabled={currId !== null} onClick={() => toggleRSVP(String(event.id), isGoing)}>
+            <button className="rsvpButton" disabled={currId !== null} onClick={() => toggleRSVP(String(event.id), isGoing)}>
                 {isGoing ? "Cancel RSVP" : "RSVP"}
             </button>
             {rsvpError && <p>Couldn't update your RSVP. Please try again.</p>}

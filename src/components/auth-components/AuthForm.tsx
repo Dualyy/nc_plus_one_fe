@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useUser from "../../hooks/useUser"
-import { useNavigate } from "react-router"
+import { useLocation, useNavigate } from "react-router"
 
 type AuthFormProps = { mode: "login" | "signup" }
 
@@ -25,11 +25,11 @@ export default function AuthForm(authMode: AuthFormProps) {
                 await login(email, password);
                 setEmail("");
                 setPassword("");
-                navigate("/")
             } else {
                 await signUp(name, email, password);
                 setEmail("");
                 setPassword("");
+                navigate("/login")
                 navigate("/login")
             }
 
@@ -41,54 +41,56 @@ export default function AuthForm(authMode: AuthFormProps) {
         }
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>{isSignup ? "Create an account" : "Log in"}</h1>
+        <div className="authform-container">
+            <form className="authform-container__form" onSubmit={handleSubmit}>
+                <h1 className="authform-header">{isSignup ? "Create an account" : "Log in"}</h1>
 
-            {isSignup && (
-                <label htmlFor="name">
-                    Name
+                {isSignup && (
+                    <label htmlFor="name">
+                        Name
+                        <input
+                            id="name"
+                            name="name"
+                            autoComplete="name"
+                            required
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
+                        />
+                    </label>
+                )}
+
+                <label htmlFor="email">
+                    Email
                     <input
-                        id="name"
-                        name="name"
-                        autoComplete="name"
+                        type="email"
+                        id="email"
+                        name="email"
+                        autoComplete="email"
                         required
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
                     />
                 </label>
-            )}
 
-            <label htmlFor="email">
-                Email
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    autoComplete="email"
-                    required
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                />
-            </label>
+                <label htmlFor="password">
+                    Password
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        autoComplete={isSignup ? "new-password" : "current-password"}
+                        required
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                    />
+                </label>
 
-            <label htmlFor="password">
-                Password
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    autoComplete={isSignup ? "new-password" : "current-password"}
-                    required
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                />
-            </label>
+                {error && <p role="alert">{error}</p>}
 
-            {error && <p role="alert">{error}</p>}
-
-            <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Please wait…" : isSignup ? "Sign up" : "Log in"}
-            </button>
-        </form>
+                <button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Please wait…" : isSignup ? "Sign up" : "Log in"}
+                </button>
+            </form>
+        </div>
     )
 }

@@ -43,9 +43,11 @@ export default function EventPage() {
 
     else {
         return (<>
-            <h2 className="header" id="header__event-page"> What's on?</h2>
-            <p className="subtext" id="subtext__event-page">currently {eventListState.events.length} events in the UK</p>
-            <SearchBar htmlId="event-search-bar" value={searchValue} changeHandler={onChangeHandler} />
+            <section className="header-container__event-page">
+                <h2 className="header" id="header__event-page"> What's on?</h2>
+                <p className="subtext" id="subtext__event-page">currently {eventListState.events.length} events in the UK</p>
+                <SearchBar htmlId="event-search-bar" value={searchValue} changeHandler={onChangeHandler} />
+            </section>
             <hr></hr>
 
             <EventGrid userEventList={userEventListState.status === "success" ? userEventListState.userRsvpEventList.events : []} refetch={allRefetch} events={eventFilter(eventListState.events)} />

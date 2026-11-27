@@ -15,22 +15,20 @@ export default function EventDetail({ event }: EventDetailProps) {
 
 
     return (<>
-        <section>
+        <section className="header__event-detail">
+
             <h2>{event.title}</h2>
             <p>{event.description}</p>
-            <Link to={`/organisers/${event.organiser_id}/stats`}>{organiserStatState.stats.name} </Link>
+            <p>Organiser: <Link to={`/organisers/${event.organiser_id}/stats`} id="link__event-detail">{organiserStatState.stats.name} </Link></p>
         </section>
         <hr />
-        <section>
+        <section className="body__event-details">
+            <h2 className="header-body__event-details">Venue details:</h2>
             {event.venue?.address ?
                 <><h2>{event.venue.name}</h2>
                     <p>{event.venue.address}</p>
-                    <p>{event.venue.capacity}</p>
+                    <p>Venue capacity: {event.venue.capacity}</p>
                 </> : <p>online</p>}
-        </section>
-
-        <section>
-
         </section>
     </>
     )
