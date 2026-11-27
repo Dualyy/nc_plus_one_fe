@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router";
 import { patchEvent } from "../../api/events";
 import useUser from "../../hooks/useUser";
 import { useEventDetails } from "../../hooks/useEventDetails";
+import { format } from "date-fns/format";
 
 export default function EventForm() {
 
@@ -20,10 +21,9 @@ export default function EventForm() {
     const navigate = useNavigate()
     const { userState } = useUser();
 
-    //only way I could find to make the date-time selector accept the value from the DB... go sweden?!
-    //This is stupid and needs changing
-    const toLocalInput = (value?: string | null) =>
-        value ? new Date(value).toLocaleString("sv-SE").slice(0, 16).replace(" ", "T") : "";
+
+   const toLocalInput = (value?: string | null) =>
+    value ? format(new Date(value), "yyyy-MM-dd'T'HH:mm") : "";
 
     useEffect(() => {
         if (!event) return;
@@ -34,13 +34,13 @@ export default function EventForm() {
         setVenueId(String(event.venue_id) ?? "");
     }, [event]);
 
-    
-   if (id !== undefined) {
-    if (isLoading) return <p>Loading...</p>;
-    if (userState.status !== "success") return <p>Please log in to edit this event</p>;
-    if (!event) return <p>Event not found</p>;
-    if (event.organiser_id !== userState.user.id) return <p>Unauthorized</p>;
-}
+
+    if (id !== undefined) {
+        if (isLoading) return <p>Loading...</p>;
+        if (userState.status !== "success") return <p>Please log in to edit this event</p>;
+        if (!event) return <p>Event not found</p>;
+        if (event.organiser_id !== userState.user.id) return <p>Unauthorized</p>;
+    }
 
     async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -58,13 +58,13 @@ export default function EventForm() {
                 ...(event.ends_at !== endsAt) && { ends_at: endsAt },
                 ...(event.venue_id !== Number(venueId)) && { venue_id: Number(venueId) }
             }
-            const patchedEvent = await patchEvent(String(event.id),patch)
+            const patchedEvent = await patchEvent(String(event.id), patch)
             if (patchedEvent) navigate(`/events/${event.id}`)
         }
     }
 
 
- 
+
 
 
 
