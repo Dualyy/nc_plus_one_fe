@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { type DetailedEvent, type EventDict, type Events } from "../types/Events"
+import { type DetailedEvent, type EventDict} from "../types/Events"
 import { getEvent } from "../api/events";
 
 

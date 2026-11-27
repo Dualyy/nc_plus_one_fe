@@ -11,7 +11,7 @@ interface EventGridProps{
 
 
 export default function EventGrid({events, userEventList, refetch}:EventGridProps){
-const { userEventListState ,refetch: rsvpRefetch} = useUserEventList();
+const { userEventListState} = useUserEventList();
 
 
 if(userEventListState.status === "loading") return <p>Loading...</p>

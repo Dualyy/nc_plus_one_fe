@@ -10,7 +10,7 @@ export default function AuthForm(authMode: AuthFormProps) {
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSignup, setIsSignUp] = useState(authMode.mode === "signup")
+    const [isSignup] = useState(authMode.mode === "signup")
     const navigate = useNavigate()
 
 

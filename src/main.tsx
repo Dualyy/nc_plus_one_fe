@@ -10,7 +10,7 @@ const container = document.getElementById("root");
 if (!container) throw new Error("DOM element #root not found");
 
 createRoot(container).render(
-  
+  <StrictMode>
     <BrowserRouter>
       <UserProvider>
         <VenueProvider>
@@ -18,5 +18,5 @@ createRoot(container).render(
         </VenueProvider>
       </UserProvider>
     </BrowserRouter>
-  ,
+  </StrictMode >,
 )

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import useVenues from "../../hooks/useVenues";
 import { useCreateEvent } from "../../hooks/useCreateEvent";
 import { useNavigate, useParams } from "react-router";
-import { useEvent } from "../../hooks/useEvent";
 import { patchEvent } from "../../api/events";
 import useUser from "../../hooks/useUser";
 import { useEventDetails } from "../../hooks/useEventDetails";

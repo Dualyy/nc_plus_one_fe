@@ -1,7 +1,5 @@
-import { useState } from "react";
 import useRSVP from "../../hooks/useRSVPs";
 import useUser from "../../hooks/useUser";
-import { useUserEventList } from "../../hooks/useUserEventsList";
 import type { BasicEvent } from "../../types/Events";
 import { useNavigate } from "react-router";
 
